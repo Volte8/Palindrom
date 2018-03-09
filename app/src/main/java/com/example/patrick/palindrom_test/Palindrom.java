@@ -22,8 +22,37 @@ public class Palindrom extends AppCompatActivity {
         Ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String name= editText.getText().toString();
 
+
+                if(name.length()<5){
+                    alarm("Zu wenig Zeichen");
+                    }
+
+                if(name.length()==0){
+                    alarm("Error");
+                }
+
+                if(name==" "){
+                    alarm("Nur ein Leerzeichen");
+                }
+
+                if(isPalindrome(name)) {
+                    alarm("Es ist ein Palindrom");
+                }
+                    else
+                        {
+                        alarm("Kein Palindrom");
+                    }
+                }
+
+            public void alarm(String message){
+                editText.setText(message);
             }
+            public	boolean	isPalindrome(String	str)	{
+                return	str.equals(new	StringBuilder(str).reverse().toString());
+            }
+
         });
     }
 }
