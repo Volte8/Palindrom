@@ -1,15 +1,18 @@
 package com.example.patrick.palindrom_test;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Palindrom extends AppCompatActivity {
 
     Button Ok= null;
     EditText editText= null;
+    TextView out= null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,7 @@ public class Palindrom extends AppCompatActivity {
 
         Ok= (Button) findViewById(R.id.Ok);
         editText=(EditText) findViewById(R.id.editText);
+        out=(TextView) findViewById(R.id.Out);
 
         Ok.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,11 +34,11 @@ public class Palindrom extends AppCompatActivity {
                     }
 
                 if(name.length()==0){
-                    alarm("Error");
+                    alarm("Kein Text");
                 }
 
-                if(name==" "){
-                    alarm("Nur ein Leerzeichen");
+                if(name.trim().length()==0){
+                    alarm("Nur Leerzeichen oder kein Text");
                 }
 
                 if(isPalindrome(name)) {
@@ -47,7 +51,8 @@ public class Palindrom extends AppCompatActivity {
                 }
 
             public void alarm(String message){
-                editText.setText(message);
+                out.setText(message);
+
             }
             public	boolean	isPalindrome(String	str)	{
                 return	str.equals(new	StringBuilder(str).reverse().toString());
