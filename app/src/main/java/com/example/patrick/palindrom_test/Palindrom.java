@@ -45,7 +45,7 @@ public class Palindrom extends AppCompatActivity {
                         alarm("Kein Palindrom");
                     }
                 }
-            }.
+            }
 
             public void alarm(String message){
                 out.setText(message);
